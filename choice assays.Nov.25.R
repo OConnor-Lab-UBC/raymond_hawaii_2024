@@ -339,7 +339,7 @@ ggplot(boot_summary, aes(x = algal.species, y = mean_pc, group = fish.id)) +
 ggsave("mean.individual.consumption.png", device = "png", path = './figures/', width = 9, height = 6)
 
 
-# 9. Correlation tests / check of MET assumptions 
+# 9. Correlation tests / check of MET assumptions ------
 
 ## 9.a correlation between log(fish weight) and log(abs(algae consumed))
 
