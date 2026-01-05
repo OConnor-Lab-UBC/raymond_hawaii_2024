@@ -360,6 +360,8 @@ plot(log(abs(fish_data$delta.weight.total.g)) ~ log(fish_data$fish.weight.g), co
 lm_model <- lm(log(abs(delta.weight.total.g)) ~ log(fish.weight.g), data = fish_data)
 abline(lm_model, col = "black", lwd = 2)  
 
+linearHypothesis(lm_model, "log(total.weight) = 0.75")
+
 # 9.b correlation between fish weight and algae consumed 
 plot(fish_data$delta.weight.total.g ~ fish_data$fish.weight.g, col = algae.col,
      xlab = "fish weight (g)",
