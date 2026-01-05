@@ -5,3 +5,6 @@
 .DS_Store
 figures/
 *.csv
+
+# Ignore generated CSV outputs
+outputs_csv/
