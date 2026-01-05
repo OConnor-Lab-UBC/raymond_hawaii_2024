@@ -380,7 +380,7 @@ ggplot(EMM.YF.df, aes(x = response, y = algal.species, color = as.factor(fish.pr
     color = "Fish Presence") +
   theme_minimal()
 
-ggsave("YF_emmeans.png", device = "png", path = './figures/', width = 7, height = 4)
+# ggsave("YF_emmeans.png", device = "png", path = './figures/', width = 7, height = 4)
 
 ### Simple pairwise comparisons...
 pairs(EMM.YF, simple = "algal.species")    # compare treats for fish presence
@@ -452,7 +452,7 @@ ggplot(EMM.BH.df, aes(x = response, y = algal.species, color = as.factor(fish.pr
     color = "Fish Presence") +
   theme_minimal()
 
-ggsave("BH_emmeans.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("BH_emmeans.png", device = "png", path = './figures/', width = 7, height = 4)
 
 ### Simple pairwise comparisons...
 pairs(EMM.BH, simple = "algal.species")    # compare treats for fish presence
@@ -612,10 +612,10 @@ ggplot() +
   ylab("Change in weight (g)") +
   theme_minimal() +
   geom_hline(yintercept=0, linetype="dashed") +
-  coord_flip(ylim = c(-3, 1.0)) +
+  coord_flip(ylim = c(-3.5, 1.0)) +
   theme(legend.position = "none") +
   add_phylopic(uuid = "56957948-cd3e-4d28-8c60-b6616a782b54", #bluespine unicornfish
-               x=2, y=0.85, height = 0.75, alpha=1, fill = "black") +
+               x=2, y=0.90, height = 0.75, alpha=1, fill = "black") +
   add_phylopic(name = "Chlorurus spilurus", #Bullethead Parrotfish
                x=3, y=0.85, height = 0.6, alpha=1, fill = "black", horizontal =  TRUE) +
   add_phylopic(name = "Acanthurus triostegus", #Convict Tang
@@ -627,7 +627,7 @@ ggplot() +
   add_phylopic(uuid = "6ddba087-d2fb-429e-b87e-4935f8f222b1", #Yellowfin Surgeonfish
                x=7, y=0.85, height = 0.75, alpha=1, fill = "black")
 
-ggsave("allspecies_e1.jitter.Nov14.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("allspecies_e1.jitter.Jan3.png", device = "png", path = './figures/', width = 7, height = 4)
 
 ############################################# 3.2 Extra figures - consumption by fish species  #####
 #Unicorn 
@@ -653,7 +653,7 @@ BU.plot <- ggplot(BUdata, aes(x = interaction(fish.present, algal.species), alga
                  size = 0.5, inherit.aes = FALSE) # Error bars for confidence intervals
 
 BU.plot
-ggsave("BU_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("BU_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
 
 #Sailfin
 SFdata <- arrange(SFdata, algal.species, fish.present)
@@ -678,7 +678,7 @@ SF.plot <- ggplot(SFdata, aes(x = interaction(fish.present, algal.species), alga
                  size = 0.5, inherit.aes = FALSE) # Error bars for confidence intervals
 
 SF.plot
-ggsave("SF_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("SF_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
 
 #Convict
 CTdata <- arrange(CTdata, algal.species, fish.present)
@@ -703,7 +703,7 @@ CT.plot <- ggplot(CTdata, aes(x = interaction(fish.present, algal.species), alga
                  size = 0.5, inherit.aes = FALSE) # Error bars for confidence intervals
 
 CT.plot 
-ggsave("CT_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("CT_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
 
 #Yellowfin 
 YFdata <- arrange(YFdata, algal.species, fish.present)
@@ -728,7 +728,7 @@ YF.plot <- ggplot(YFdata, aes(x = interaction(fish.present, algal.species), alga
                  size = 0.5, inherit.aes = FALSE) # Error bars for confidence intervals
 
 YF.plot
-ggsave("YF_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("YF_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
 
 #Bullethead
 BHdata <- arrange(BHdata, algal.species, fish.present)
@@ -753,7 +753,7 @@ BH.plot <- ggplot(BHdata, aes(x = interaction(fish.present, algal.species), alga
                  size = 0.5, inherit.aes = FALSE) # Error bars for confidence intervals
 
 BH.plot
-ggsave("BH_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("BH_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
 
 #Palenose
 PNdata <- arrange(PNdata, algal.species, fish.present)
@@ -778,7 +778,7 @@ PN.plot <- ggplot(PNdata, aes(x = interaction(fish.present, algal.species), alga
                  size = 0.5, inherit.aes = FALSE) # Error bars for confidence intervals
 
 PN.plot
-ggsave("PN_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("PN_e1.jitter.png", device = "png", path = './figures/', width = 7, height = 4)
 
 ### bubble plot of change in algae 
 ## Create labels for algae species 
