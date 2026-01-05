@@ -8,3 +8,6 @@ figures/
 
 # Ignore generated CSV outputs
 outputs_csv/
+
+# Ignore generated CSV outputs
+outputs_csv/
