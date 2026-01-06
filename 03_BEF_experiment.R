@@ -540,6 +540,16 @@ t.test(poly_data$residual_consumption_eucheuma.s)
         
        # ggsave("observed.expected.6sp.by.algae.png", device = "png", path = './figures/', width = 7, height = 4)
 
+        ## 3 species polyculture - consumption by replicate (Figure S7)
+        
+        p3data <- data[(data$treatment == "3 species"), ]
+        
+        plot(p3data$delta.weight.total.s ~ p3data$replicate,
+             xlab = "Polyculture replicate",
+             ylab = "Mass-scaled change in algal mass (g)",
+             las = 1)       
+        
+        
 ### Correlations ####
 algae.col <- sequential_hcl(3, palette = "TealGrn")
 fish_data <- data[data$treatment != "control", ]
