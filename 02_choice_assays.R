@@ -288,7 +288,7 @@ ggplot(data, aes(y = delta.weight.total.s,
                  col = fish.species)) + 
   geom_jitter(
     aes(size = ifelse(is.na(fish.weight.g) | fish.weight.g == 0, 2, fish.weight.g)), 
-    width = 0.25, alpha = 0.8
+    width = 0.25, alpha = 0.6
   ) +  
   scale_x_discrete(labels = fish.labs) +  
   geom_boxplot(aes(group = fish.species),
@@ -311,7 +311,7 @@ ggplot(data, aes(y = delta.weight.total.s,
   scale_color_manual(values = c("#177F97", "#72008D", "#AB1488", "#D24E71", "#E8853A", "#DD6157", "#ECC000")) +
   theme_minimal()
 
-ggsave("algal.by.fish.met.scale.aug.1.png", device = "png", path = './figures/', width = 7, height = 4)
+ggsave("algal.by.fish.met.scale.aug.1.0.6.png", device = "png", path = './figures/', width = 7, height = 4)
 
 ## 8.3 individual fish consumption from bootstrapped data (Figure S3) 
 # Summarize across bootstraps per fish x algae

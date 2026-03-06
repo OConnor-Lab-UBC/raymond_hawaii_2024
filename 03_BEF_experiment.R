@@ -41,6 +41,7 @@ library(blme)
 library(visreg)
 library(car)
 
+
 ### 2.  Model response for all treatments ####
 
 # test for normality 
@@ -101,7 +102,7 @@ plot(pairs.full)
     
     ggplot(data, aes(x = treatment, y = delta.weight.total.s, color = treatment)) +
       # Scatter plot
-      geom_jitter(width = 0.25, size = 3, alpha = 0.8) + 
+      geom_jitter(width = 0.25, size = 3, alpha = 0.6) + 
       scale_x_discrete(labels = xlabs) + # Adjust transparency to make the points less overwhelming
       # Boxplot
       geom_boxplot(aes(group = treatment),
@@ -122,7 +123,7 @@ plot(pairs.full)
       # Legends
       guides(color = guide_legend(title = "Treatment"))
     
-    #ggsave("algalconsumption.alltreatments.bef.met.scaled.jan.3.png", device = "png", path = './figures/', width = 7, height = 4)
+    #ggsave("algalconsumption.alltreatments.bef.met.scaled.jan.3.0.6.png", device = "png", path = './figures/', width = 7, height = 4)
     
     
     ### 3. Expected vs observed consumption - adjusted for fish biomass 
@@ -229,14 +230,16 @@ print(wilcox_result)
     ggplot(poly_data, aes(x = expected_polyculture, y = delta.weight.total.s)) +
       geom_point(aes(color = treatment), size = 3) +
       geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray") +  # 1:1 line
-      scale_x_reverse() +
-      scale_y_reverse() +
-      facet_wrap(~treatment) +
+      scale_x_continuous(limits = c(-26, 0), expand = c(0, 0)) +
+      scale_y_continuous(limits = c(-26, 0), expand = c(0, 0)) +
+     # scale_x_reverse() +
+     # scale_y_reverse() +
+     # facet_wrap(~treatment) +
       labs(x = "Mass-scaled expected consumption (g)", y = "Mass-scaled observed consumption (g)",
            color = "Treatment") +
       theme_minimal()
     
-    #ggsave("exp.observed.scatter.met.scaled.jan.3.png", device = "png", path = './figures/', width = 7, height = 4)
+ # ggsave("exp.observed.scatter.met.scaled.merged.feb9.zero.png", device = "png", path = './figures/', width = 7, height = 4)
     
 
 ### 3c. Predict consumption by algal spices ------
@@ -341,14 +344,16 @@ t.test(poly_data$residual_consumption_eucheuma.s)
     ggplot(plot_data, aes(x = expected, y = observed)) +
       geom_point(aes(color = treatment), size = 3) +
       geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray") +  # 1:1 line
-      scale_x_reverse() +
-      scale_y_reverse() +
+      scale_x_continuous(limits = c(-13, 1), expand = c(0, 0)) +
+      scale_y_continuous(limits = c(-13, 1), expand = c(0, 0)) +
+      #scale_x_reverse() +
+      #scale_y_reverse() +
       facet_wrap(~ algae, labeller = as_labeller(latin_labels, default = label_parsed)) +
       labs(x = "Mass-scaled expected consumption (g)", y = "Mass-scaled observed consumption (g)",
            color = "Treatment") +
       theme_minimal()
     
-    #ggsave("observed.expected.scaled.by.algal.mass.labs.Jan.3.png", device = "png", path = './figures/', width = 7, height = 4)
+    #ggsave("observed.expected.scaled.by.algal.mass.labs.feb13.png", device = "png", path = './figures/', width = 7, height = 4)
     
     
 ### Additional plots ------

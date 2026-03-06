@@ -598,7 +598,7 @@ fish.labs <- c("Convict Tang" = expression(italic("A.triostegus")),
                "Yellowfin Surgeonfish" = expression(italic("A.xanthopterus")),
                "Control" = "Control")
 ggplot() +
-  geom_jitter(data = data, aes(y = delta.weight.g, x = fish.species, color = delta.weight.g > 0), alpha = 0.6, width = 0.2, size = 2) +
+  geom_jitter(data = data, aes(y = delta.weight.g, x = fish.species, color = delta.weight.g > 0), alpha = 0.4, width = 0.2, size = 2) +
   facet_wrap(~ algal.species,
              labeller = labeller(
                algal.species = as_labeller(algae.labs, label_parsed)), ncol = 2,) +
@@ -627,7 +627,7 @@ ggplot() +
   add_phylopic(uuid = "6ddba087-d2fb-429e-b87e-4935f8f222b1", #Yellowfin Surgeonfish
                x=7, y=0.85, height = 0.75, alpha=1, fill = "black")
 
-#ggsave("allspecies_e1.jitter.Jan3.png", device = "png", path = './figures/', width = 7, height = 4)
+#ggsave("allspecies_e1.jitter.Jan3.0.4.png", device = "png", path = './figures/', width = 7, height = 4)
 
 ############################################# 3.2 Extra figures - consumption by fish species  #####
 #Unicorn 
