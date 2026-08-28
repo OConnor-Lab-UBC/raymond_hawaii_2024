@@ -242,7 +242,16 @@ plot(pairs.e2)
 
 ## create labels for fish and algae 
 
-algae.labs <- c(expression(italic("H.discoidea")), expression(italic("A.spicifera")), expression(italic("E.denticulatum")), expression(italic("G.salicornia")))
+#summary_emm <- read.csv('E2.bootstrapped.emm.Nov.15.csv')
+
+algae.labs <- c(expression(italic("A.spicifera")), expression(italic("G.salicornia")), expression(italic("E.denticulatum")), expression(italic("H.discoidea")))
+
+summary_emm$algal.species <- factor(summary_emm$algal.species,
+                          levels = c(
+                          "A.spicifera.delta.wt.g",
+                          "G.salicornia.delta.wt.g",
+                          "E.denticulatum.delta.wt.g",
+                          "H.discoidea.delta.wt.g"))
 
 fish.labs <- c("Convict Tang" = expression(italic("A.triostegus")), 
                "Palenose Parrotfish" = expression(italic("S.psittacus")),
@@ -259,8 +268,8 @@ summary_emm$fish.species <- factor(summary_emm$fish.species, levels = c("Convict
 ## plot bootstrapped data 
 ggplot(summary_emm, aes(x = algal.species, y = mean_response, 
                         color = fish.species, group = fish.species, linetype = fish.species)) +
-  geom_pointrange(aes(ymin = lower_95, ymax = upper_95),
-                  position = position_dodge(width = 0.5), size = 0.4, fatten = 2.3) +
+  geom_pointrange(aes(ymin = lower_95, ymax = upper_95, shape = fish.species, size = fish.species, fill = fish.species),
+                  position = position_dodge(width = 0.5), size = 0.4, fatten = 2.2) +
   geom_line(position = position_dodge(width = 0.5), size = 0.6) +
   theme_bw() +
   scale_x_discrete(labels = algae.labs) +
@@ -278,9 +287,21 @@ ggplot(summary_emm, aes(x = algal.species, y = mean_response,
     "Yellowfin Surgeonfish" = "solid")) +
   scale_color_manual(values = c("#72008D", "#AB1488", "#D24E71", "#E8853A", "#DD6157", "#ECC000"), 
                      labels = fish.labs) +
-  guides(linetype = "none")
+  scale_shape_manual(values = c(22, 21, 24, 23, 25, 4),
+      labels = fish.labs) +
+  scale_fill_manual(
+    values = c( "#72008D", "#AB1488", "#D24E71","#E8853A","#DD6157","#ECC000"),
+    labels = fish.labs) +
+  guides(linetype = "none", shape = "none", fill = "none",  
+         color = guide_legend(
+           title = "Fish Species",
+           override.aes = list(
+             shape = c(22, 21, 24, 23, 25, 4),
+             fill = c("#72008D", "#AB1488", "#D24E71","#E8853A","#DD6157","#ECC000"), 
+             linetype = c("solid", "solid", "solid", "dashed", "solid", "solid"))
+           ))
 
-ggsave("dot.whisker.e2.bootstrapped.model.Nov.15.png", device = "png", path = './figures/', width = 7, height = 4)
+ggsave("dot.whisker.e2.bootstrapped.model.Aug 28.png", device = "png", path = './figures/', width = 7, height = 4)
 
 ## 8.2 Figure 3 - total adjusted algae consumed by species - where point size is un-adjusted fish weight (Fig) 
 ggplot(data, aes(y = delta.weight.total.s, 
