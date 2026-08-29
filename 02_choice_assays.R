@@ -345,19 +345,31 @@ boot_summary <- boot_results %>%
     .groups = "drop"
   )
 
+## create species name labels for facets 
+fish.facet.labs <- c(
+  "Convict Tang" = "italic(A.triostegus)",
+  "Palenose Parrotfish" = "italic(S.psittacus)",
+  "Bullethead Parrotfish" = "italic(C.spilurus)",
+  "Bluespine Unicornfish" = "italic(N.unicornis)",
+  "Sailfin tang" = "italic(Z.velifer)",
+  "Yellowfin Surgeonfish" = "italic(A.xanthopterus)"
+)
+
 # Plot
 ggplot(boot_summary, aes(x = algal.species, y = mean_pc, group = fish.id)) +
   geom_point(aes(color = fish.id)) +
   geom_line(aes(color = fish.id)) +
   # geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci, color = fish.id), width = 0.2) +
   theme_bw() +
-  facet_wrap( ~ fish.species, ncol = 2) + 
+  facet_wrap( ~ fish.species, ncol = 2,
+              labeller = as_labeller(fish.facet.labs, label_parsed)) + 
   scale_x_discrete(labels = algae.labs) +
   xlab("Algae Species") +
   ylab("Mean Proportional Consumption (bootstrapped)") +
-  labs(title = "Individual Fish Consumption (Bootstrapped Means)")
+  labs(title = "Individual Fish Consumption (Bootstrapped Means)") + 
+  guides(color = "none" )
 
-ggsave("mean.individual.consumption.png", device = "png", path = './figures/', width = 9, height = 6)
+ggsave("mean.individual.consumption.Aug.28.png", device = "png", path = './figures/', width = 9, height = 6)
 
 
 # 9. Correlation tests / check of MET assumptions ------
